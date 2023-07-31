@@ -16,3 +16,9 @@ HexMap/Assembly-CSharp.csproj
 HexMap/HexMap.sln
 
 HexMap/Sirenix.OdinInspector.Modules.UnityMathematics.csproj
+
+HexMap/.idea/
+
+HexMap/obj/
+
+HexMap/HexMap.sln.DotSettings.user

@@ -7,18 +7,18 @@
             "actions": [
                 {
                     "name": "Pan",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "749e7e4a-8553-4326-8e8e-e3f71ae01dd9",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
                     "name": "Zoom",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "01bbe89d-355a-4c2c-9abf-c1b798b78404",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -28,7 +28,7 @@
                 {
                     "name": "",
                     "id": "7007b0e7-fff5-4df8-b125-6a85bddd4e09",
-                    "path": "",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -39,9 +39,9 @@
                 {
                     "name": "",
                     "id": "b62d751a-aad0-45ad-87bf-a567550cc0de",
-                    "path": "",
+                    "path": "<Mouse>/scroll/y",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Normalize(min=-1,max=1)",
                     "groups": "",
                     "action": "Zoom",
                     "isComposite": false,
