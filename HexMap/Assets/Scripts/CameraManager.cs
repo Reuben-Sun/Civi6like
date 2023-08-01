@@ -7,6 +7,9 @@ using Cinemachine;
 public class CameraManager : MonoBehaviour
 {
     public float panSpeed = 2f;
+    public float zoomSpeed = 2f;
+    public float zoomInMax = 40f;
+    public float zoomOutMax = 80f;
     
     private CinemachineInputProvider _inputProvider;
     private CinemachineVirtualCamera _virtualCamera;
@@ -27,6 +30,11 @@ public class CameraManager : MonoBehaviour
         if (x != 0 || y != 0)
         {
             PanScreen(x, y);
+        }
+
+        if (z != 0)
+        {
+            ZoomScreen(z);
         }
     }
 
@@ -54,11 +62,17 @@ public class CameraManager : MonoBehaviour
         return direction;
     }
 
-    public void PanScreen(float x, float y)
+    private void PanScreen(float x, float y)
     {
         Vector2 direction = GetPanDirection(x, y);
         _cameraTransform.position = Vector3.Lerp(_cameraTransform.position, 
-            _cameraTransform.position + new Vector3(direction.x, 0, direction.y) * panSpeed, Time.deltaTime);
+            _cameraTransform.position + new Vector3(direction.x, 0, direction.y), Time.deltaTime * panSpeed);
+    }
+    private void ZoomScreen(float increment)
+    {
+        float fov = _virtualCamera.m_Lens.FieldOfView;
+        float target = Mathf.Clamp(fov + increment, zoomInMax, zoomOutMax);
+        _virtualCamera.m_Lens.FieldOfView = Mathf.Lerp(fov, target, Time.deltaTime * zoomSpeed);
     }
     
 }
